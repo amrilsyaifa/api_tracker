@@ -30,6 +30,16 @@ or download zip
 open postman or insomnia [https://localhost:1337](https://localhost:1337)
 
 9. Detail Api
+
+[http://localhost:1337/api/register](http://localhost:1337/api/register)
+
+form-data
+```email: amril@gmail.com, username: amril, password: 12345
+```
+result
 ```javascript
-{ "some": "json" }
+{ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50IjoiNWNlYWE4NTlkNWE3OTgwZWU0OGFmYmUyIiwiZW1haWwiOiJhbXJpbEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImFtcmlsIiwiaWF0IjoxNTU4ODgyMzkzLCJleHAiOjE1NTg5Njg3OTN9.VLcFo5FhjIZxQuOU9YgIcx1E1wEi9e6ZJ84r6M8mXGY",
+"info": "user create",
+"username": "amril",
+"email": "amril@gmail.com" }
 ```
