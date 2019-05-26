@@ -31,6 +31,7 @@ open postman or insomnia [https://localhost:1337](https://localhost:1337)
 
 9. Detail Api
 
+#### `Account`
 POST [http://localhost:1337/api/register](http://localhost:1337/api/register)
 form-data
 ```javascript
@@ -74,4 +75,178 @@ result
             "password": "$2b$10$Q5FR8rlwxyjZK2PAAsi9J.fs3jTZOyf4vPsDHbxXuLORZ6oApskHW"
         }  
     ] }
+```
+
+
+besides using account use bearer token
+
+#### `Project`
+
+POST [http://localhost:1337/api/project](http://localhost:1337/api/project)
+form-data
+```javascript
+{"title": "api-tracker", "description": "api for tracking issue"}
+```
+result
+```javascript
+{ "create": {
+    "createdAt": 1558883038778,
+    "updatedAt": 1558883038778,
+    "id": "5ceaaadefa06310f5c7f80d2",
+    "title": "api-tracker",
+    "description": "api for tracking issue"
+} }
+```
+
+GET [http://localhost:1337/api/project](http://localhost:1337/api/project)
+
+result
+```javascript
+{ 
+    "createdAt": 1558883038778,
+    "updatedAt": 1558883038778,
+    "id": "5ceaaadefa06310f5c7f80d2",
+    "title": "api-tracker",
+    "description": "api for tracking issue"
+}
+```
+
+GET with ID [http://localhost:1337/api/project/5ceaaadefa06310f5c7f80d2](http://localhost:1337/api/project/5ceaaadefa06310f5c7f80d2)
+
+result
+```javascript
+{ 
+    "createdAt": 1558883038778,
+    "updatedAt": 1558883038778,
+    "id": "5ceaaadefa06310f5c7f80d2",
+    "title": "api-tracker",
+    "description": "api for tracking issue"
+}
+```
+
+
+UPDATE [http://localhost:1337/api/project/5ceaaadefa06310f5c7f80d2](http://localhost:1337/api/project/5ceaaadefa06310f5c7f80d2)
+form-data
+```javascript
+{"title": "tes-api v1", "description": "testing api v1"}
+```
+result
+```javascript
+{ "updateProject": [
+    {
+        "createdAt": 1558883038778,
+        "updatedAt": 1558883264544,
+        "id": "5ceaaadefa06310f5c7f80d2",
+        "title": "tes-api v1",
+        "description": "testing api v1"
+    }
+] }
+```
+
+DELETE [http://localhost:1337/api/project/5ceaa3a62ef4ef0e8fce2137](http://localhost:1337/api/project/5ceaa3a62ef4ef0e8fce2137)
+
+result
+```javascript
+{ 
+    "delete": "ID = 5ceaa3a62ef4ef0e8fce2137"
+}
+```
+
+
+#### `Tracking Issue`
+
+POST [http://localhost:1337/api/project/issues](http://localhost:1337/api/project/issues)
+form-data
+```javascript
+{"summary": "get Api problem", "description": "after get API 404","assign": "5cea93ab54f6730d73ba0240", "priority":"hight", "project":"5ceaaadefa06310f5c7f80d2"}
+```
+result
+```javascript
+{ "create": {
+        "createdAt": 1558883580049,
+        "updatedAt": 1558883580049,
+        "id": "5ceaacfcfa06310f5c7f80d3",
+        "summary": "get Api problem",
+        "description": "after get API 404",
+        "state": "open",
+        "priority": "high",
+        "issueBug": "",
+        "assign": "5cea93ab54f6730d73ba0240",
+        "project": "5ceaaadefa06310f5c7f80d2",
+        "handler": null
+    } }
+```
+
+GET [http://localhost:1337/api/project/issues/](http://localhost:1337/api/project/issues/)
+
+result
+```javascript
+{ 
+        "createdAt": 1558883580049,
+        "updatedAt": 1558883580049,
+        "id": "5ceaacfcfa06310f5c7f80d3",
+        "summary": "get Api problem",
+        "description": "after get API 404",
+        "state": "open",
+        "priority": "high",
+        "issueBug": "",
+        "assign": {
+            "createdAt": 1558877099405,
+            "updatedAt": 1558877099405,
+            "id": "5cea93ab54f6730d73ba0240",
+            "email": "amrilsyaifa@gmail.com",
+            "username": "amrilsyaifa",
+            "password": "$2b$10$a1Jh6caGXYaXdzZJ25JTDOSQGBZQT68/ijXkmggFuV4a6kpcddgUG"
+        },
+        "project": {
+            "createdAt": 1558883038778,
+            "updatedAt": 1558883264544,
+            "id": "5ceaaadefa06310f5c7f80d2",
+            "title": "tes-api v1",
+            "description": "testing api v1"
+        },
+        "handler": null
+}
+```
+
+GET with ID [http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3](http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3)
+
+GET issue OPEN [http://localhost:1337/api/project/issues/open](http://localhost:1337/api/project/issues/open)
+
+GET issue CLOSE [http://localhost:1337/api/project/issues/close](http://localhost:1337/api/project/issues/close)
+
+
+UPDATE [http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3](http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3)
+
+form-data
+```javascript
+{"handler": "5cea93ab54f6730d73ba0240", "issueBug": "close after install package","state": "close"}
+```
+
+result
+```javascript
+{ 
+"createdAt": 1558883580049,
+    "updatedAt": 1558883831316,
+    "id": "5ceaacfcfa06310f5c7f80d3",
+    "summary": "get Api problem",
+    "description": "after get API 404",
+    "state": "close",
+    "priority": "high",
+    "issueBug": "close after install package",
+    "assign": "5cea93ab54f6730d73ba0240",
+    "project": "5ceaaadefa06310f5c7f80d2",
+    "handler": "5cea93ab54f6730d73ba0240"
+}
+```
+
+
+
+DELETE [http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3](http://localhost:1337/api/project/issues/5ceaacfcfa06310f5c7f80d3)
+
+result
+```javascript
+{ 
+    "delete": "ID = 5ceaacfcfa06310f5c7f80d3"
+}
 ```
