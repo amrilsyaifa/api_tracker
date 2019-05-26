@@ -1,5 +1,5 @@
 /**
- * Account.js
+ * Project.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -7,18 +7,11 @@
 
 module.exports = {
   attributes: {
-    email: {
+    title: {
       type: "string",
-      required: true,
-      isEmail: true,
-      unique: true
+      required: true
     },
-    username: {
-      type: "string",
-      required: true,
-      unique: true
-    },
-    password: {
+    description: {
       type: "string",
       required: true
     }

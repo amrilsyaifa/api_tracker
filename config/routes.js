@@ -20,7 +20,14 @@ module.exports.routes = {
   //Account Auth
   "GET /api/account": "AccountController.getAll",
   "POST /api/register": "AccountController.register",
-  "POST /api/login": "AccountController.login"
+  "POST /api/login": "AccountController.login",
+
+  //project
+  "POST /api/project": "ProjectController.post",
+  "GET /api/project": "ProjectController.getAll",
+  "GET /api/project/:id": "ProjectController.getId",
+  "PATCH /api/project/:id": "ProjectController.updateId",
+  "DELETE /api/project/:id": "ProjectController.removeId"
 
   /***************************************************************************
    *                                                                          *
