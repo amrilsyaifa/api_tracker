@@ -27,8 +27,16 @@ module.exports.routes = {
   "GET /api/project": "ProjectController.getAll",
   "GET /api/project/:id": "ProjectController.getId",
   "PATCH /api/project/:id": "ProjectController.updateId",
-  "DELETE /api/project/:id": "ProjectController.removeId"
+  "DELETE /api/project/:id": "ProjectController.removeId",
 
+  //Issues
+  "POST /api/project/issues": "IssuesController.post",
+  "GET /api/project/issues": "IssuesController.getAll",
+  "GET /api/project/issues/:id": "IssuesController.getID",
+  "GET /api/project/issues/open": "IssuesController.getOpen",
+  "GET /api/project/issues/close": "IssuesController.getClose",
+  "PATCH /api/project/issues/:id": "IssuesController.updateId",
+  "DELETE /api/project/issues/:id": "IssuesController.removeId"
   /***************************************************************************
    *                                                                          *
    * More custom routes here...                                               *
